@@ -50,7 +50,6 @@
 
         this.getData = function () {
             chartService.getData().then(function (data) {
-                debugger;
                 self.data = data;
                 readyForRender = true;
                 self.renderData();
