@@ -11,11 +11,13 @@
             opens: "left"
         };
         
+        this.init =  function() {
+            $scope.$watch(function () { return self.datePickerSettings.date; }, function (newDate) {
+                $rootScope.$broadcast('date.range.changed', newDate);
+            }, false);
+        }
 
-        $scope.$watch(function () { return self.datePickerSettings.date; }, function (newDate) {
-            $rootScope.$broadcast('date.range.changed', newDate);
-        }, false);
-
+        this.init();
     }]);
 
 

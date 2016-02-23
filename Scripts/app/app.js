@@ -26,7 +26,6 @@
         ])
         .config(['ChartProvider', function (chartProvider) {
             chartProvider.setUrl('http://api.mynameisvova.ru/chart/getdata?callback=JSON_CALLBACK&seriesCount={seriesCount}');
-           
         }]);;
     })();
 })(angular);
