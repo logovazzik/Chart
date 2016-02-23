@@ -18,7 +18,13 @@
             credits: {
                 enabled: false
             },
-
+            plotOptions: {
+                series: {
+                    marker: {
+                        enabled: true
+                    }
+                }
+            },
             series: [
                 {
                     lineWidth: 1,
@@ -30,10 +36,12 @@
                             [1, window.Highcharts.Color('#FFE9DB').setOpacity(0).get('rgba')]
                         ]
                     },
+                   
                     name: 'Company A'
                 },
                  {
                      lineWidth: 1,
+                   
                      color: '#FCE0A9',
                      fillColor: {
                          linearGradient: [0, 0, 0, 300],
