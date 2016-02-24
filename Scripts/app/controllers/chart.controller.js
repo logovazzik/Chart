@@ -56,43 +56,16 @@
             ]
         };
 
-        this.getData = function () {
-            chartService.getData({seriesCount: 2}).then(function (data) {
-                self.data = data;
-                readyForRender = true;
-                self.renderData();
+        this.getData = function (dateRange) {
+            chartService.getData({seriesCount: 2}, dateRange).then(function (data) {
+                $rootScope.$broadcast("chart.data.changed", { data: data });
             });
         };
 
-        this.filteredData = function () {
-            var result = [], current;
-            for (var i = 0; i < this.data.length; ++i) {
-                result.push([]);
-                for (var j = 0; j < this.data[i].length; ++j) {
-                    current = this.data[i][j];
-                    if (current[0] >= this.dateRange.startDate && current[0] <= this.dateRange.endDate) {
-                        result[i].push(current);
-                    }
-                }
-            }
-            return result;
-        };
-
-        this.renderData = function () {
-            if (!readyForRender) return;
-            $rootScope.$broadcast("chart.data.changed", { data: this.filteredData() });
-        };
-        this.dateRange = {
-            startDate:null,
-            endDate: null
-        };
-
+       
         this.init = function () {
-            this.getData();
-
-            $rootScope.$on("date.range.changed", function (e, data) {
-                self.dateRange = data;
-                self.renderData();
+            $rootScope.$on("date.range.changed", function (e, dateRange) {
+                self.getData(dateRange);
             });
         };
 
