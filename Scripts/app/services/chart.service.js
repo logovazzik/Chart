@@ -2,10 +2,8 @@
     var ChartService = function (chartProvider) {
         this.data = [];
 
-        this.getData = function() {
-            return chartProvider.getData({
-                seriesCount: 2
-            }).then(function (response) {
+        this.getData = function(q) {
+            return chartProvider.getData(q).then(function (response) {
                 var data = response.data;
                 for (var i = 0; i < data.length; ++i) {
                     data[i].sort(function(a,b) {
