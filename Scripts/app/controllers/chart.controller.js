@@ -57,7 +57,7 @@
         };
 
         this.getData = function () {
-            chartService.getData().then(function (data) {
+            chartService.getData({seriesCount: 2}).then(function (data) {
                 self.data = data;
                 readyForRender = true;
                 self.renderData();
